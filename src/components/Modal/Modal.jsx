@@ -8,10 +8,18 @@ const Modal = ({ hideModal, selectedHit }) => {
       }
     };
 
+    const handleOverlayClick = evt => {
+      if (evt.target.classList.contains('Overlay')) {
+        hideModal();
+      }
+    };
+
     document.addEventListener('keydown', handleEscClick);
+    document.addEventListener('click', handleOverlayClick);
 
     return () => {
       document.removeEventListener('keydown', handleEscClick);
+      document.removeEventListener('click', handleOverlayClick);
     };
   }, [hideModal]);
 
